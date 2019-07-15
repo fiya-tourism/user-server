@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 定义如何找到这个mapper -->
+<mapper namespace="com.fy.user.mapper.UserMapper">
+
+    <!--查询用户信息-->
+    <select id="queryUserList" resultType="com.fy.user.domain.UserVO" parameterType="com.fy.user.commons.utils.PageUtils">
+        select * from fy_user
+        <where>
+            com_yn=0
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="userName != null and userName!=''">
+                and user_name like '%'#{userName}'%'
+            </if>
+            <if test="userBir != null">
+                and user_bir = #{userBir}
+            </if>
+        </where>
+
+        <if test="sort != null and sort != ''">
+            ORDER BY  ${sort} ${order}
+        </if>
+    </select>
+
+    <!--添加用户信息-->
+    <insert id="add" parameterType="com.fy.user.domain.UserVO">
+        INSERT INTO   fy_user(user_sex,user_name,user_age,user_photo,user_phone,user_identity,user_bir,user_dwell,user_email,user_signature,user_collect,user_password,com_create,com_update,com_yn) VALUES
+        (#{userName},#{userSex},#{userAge},#{userPhoto},#{userPhone},#{userIdentity},#{userBir},#{userDwell},#{userEmail},#{userSignature},#{userCollect},#{userPassword},#{comCreate},#{comUpdate},#{comYn})
+    </insert>
+
+    <!--逻辑删除 -->
+    <update id="delete" parameterType="com.fy.user.domain.UserVO" >
+        UPDATE fy_user
+          <set>
+              <if test="userId != null">
+                  user_id = #{userId},
+              </if>
+              <if test="userId != null">
+                  user_sex = #{userSex},
+              </if>
+              <if test="userName != null and userName != ''">
+                  user_name = #{userName},
+              </if>
+              <if test="user_age != null">
+                  user_age = #{userAge},
+              </if>
+              <if test="user_photo != null and user_photo !=''">
+                  user_photo = #{userPhoto},
+              </if>
+              <if test="user_phone != null and user_phone != ''">
+                  user_phone = #{userPhone},
+              </if>
+              <if test="userIdentity != null and userIdentity != ''">
+                  user_identity = #{userIdentity},
+              </if>
+              <if test="userBir != null">
+                  user_dwell = #{userBir},
+              </if>
+              <if test="userDwell != null and userDwell !=''">
+                  user_dwell = #{userDwell},
+              </if>
+              <if test="userEmail != null and userEmail != ''">
+                  user_email = #{userEmail},
+              </if>
+              <if test="userSignature != null and userSignature !=''">
+                  user_signature = #{userSignature},
+              </if>
+              <if test="userCollect != null">
+                  user_collect = #{userCollect},
+              </if>
+              <if test="userPassword != null and userPassword != ''">
+                  user_password = #{userPassword},
+              </if>
+              <if test="comCreate != null">
+                  com_create = #{comCreate},
+              </if>
+              <if test="comUpdate != null">
+                  com_update = #{comUpdate},
+              </if>
+              <if test="comYn != null">
+                  com_yn = #{comYn},
+              </if>
+          </set>
+            where user_id = #{userId}
+    </update>
+
+    <!--根据id 查询-->
+    <select id="toUpdate" parameterType="com.fy.user.domain.UserVO" resultType="com.fy.user.domain.UserVO">
+        SELECT * FROM  fy_user
+        where
+          user_id = #{userId}
+    </select>
+
+    <!--修改 -->
+    <update id="updateInfo" parameterType="com.fy.user.domain.UserVO" >
+        UPDATE fy_user
+        <set>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="userId != null">
+                user_sex = #{userSex},
+            </if>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="user_age != null">
+                user_age = #{userAge},
+            </if>
+            <if test="user_photo != null and user_photo !=''">
+                user_photo = #{userPhoto},
+            </if>
+            <if test="user_phone != null and user_phone != ''">
+                user_phone = #{userPhone},
+            </if>
+            <if test="userIdentity != null and userIdentity != ''">
+                user_identity = #{userIdentity},
+            </if>
+            <if test="userBir != null">
+                user_dwell = #{userBir},
+            </if>
+            <if test="userDwell != null and userDwell !=''">
+                user_dwell = #{userDwell},
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                user_email = #{userEmail},
+            </if>
+            <if test="userSignature != null and userSignature !=''">
+                user_signature = #{userSignature},
+            </if>
+            <if test="userCollect != null">
+                user_collect = #{userCollect},
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                user_password = #{userPassword},
+            </if>
+            <if test="comCreate != null">
+                com_create = #{comCreate},
+            </if>
+            <if test="comUpdate != null">
+                com_update = #{comUpdate},
+            </if>
+            <if test="comYn != null">
+                com_yn = #{comYn},
+            </if>
+        </set>
+        where user_id = #{userId}
+    </update>
+</mapper>
