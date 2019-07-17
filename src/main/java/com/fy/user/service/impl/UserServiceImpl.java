@@ -10,6 +10,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 import java.util.List;
@@ -31,7 +33,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public DataGridUtil<UserVO> queryUserList(PageUtils page){
+    public DataGridUtil<UserVO> queryUserList(@RequestBody PageUtils page){
         String s = StrTool.humpToLine2(page.getSort());
         page.setSort(s);
         PageHelper.startPage(page.getPage(),page.getRows());
@@ -61,15 +63,16 @@ public class UserServiceImpl implements UserService {
 
     /**
      *   逻辑删除 用户信息
-     * @param userVO
+     * @param
      */
     @Override
-    public void delete(UserVO userVO) {
+    public void delete(@RequestParam("id") Integer id) {
+        UserVO userVO = new UserVO();
         //修改时间
         userVO.setComUpdate(new Date());
-        //逻辑状态
+        //逻辑状态 =1 不展示用户信息
         userVO.setComYn(1);
-        userMapper.delete(userVO);
+        userMapper.delete(id);
     }
 
     /**

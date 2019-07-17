@@ -3,6 +3,9 @@ package com.fy.user.mapper;
 import com.fy.user.commons.utils.PageUtils;
 import com.fy.user.domain.UserVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -27,9 +30,9 @@ public interface UserMapper {
 
     /**
      *  逻辑删除用户信息
-     * @param userVO
+     * @param
      */
-    void delete(UserVO userVO);
+    void delete(Integer id);
 
     /**
      *  根据id回显用户信息

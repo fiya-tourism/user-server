@@ -9,7 +9,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -47,23 +49,22 @@ public class UserController {
     @ApiOperation(value="添加用户信息")
     @RequestMapping(value = "add")
     @ResponseBody
-    public String add(UserVO userVO){
+    public String add(@RequestBody UserVO userVO){
         return userService.add(userVO);
     }
 
     /**
      *  根据id 逻辑删除用户信息
-     * @param userVO
+     * @param
      * @return
      */
     @ApiOperation(value = "删除用户信息")
     @RequestMapping("delete")
     @ResponseBody
-    public ResultVO delete(UserVO userVO){
+    public ResultVO delete(Integer id){
         ResultVO resultVO = new ResultVO();
-
        try {
-           userService.delete(userVO);
+           userService.delete(id);
            resultVO.setMsg("删除成功");
        }catch(Exception e){
            resultVO.setMsg("删除失败");

@@ -33,57 +33,9 @@
     <!--逻辑删除 -->
     <update id="delete" parameterType="com.fy.user.domain.UserVO" >
         UPDATE fy_user
-          <set>
-              <if test="userId != null">
-                  user_id = #{userId},
-              </if>
-              <if test="userId != null">
-                  user_sex = #{userSex},
-              </if>
-              <if test="userName != null and userName != ''">
-                  user_name = #{userName},
-              </if>
-              <if test="user_age != null">
-                  user_age = #{userAge},
-              </if>
-              <if test="user_photo != null and user_photo !=''">
-                  user_photo = #{userPhoto},
-              </if>
-              <if test="user_phone != null and user_phone != ''">
-                  user_phone = #{userPhone},
-              </if>
-              <if test="userIdentity != null and userIdentity != ''">
-                  user_identity = #{userIdentity},
-              </if>
-              <if test="userBir != null">
-                  user_dwell = #{userBir},
-              </if>
-              <if test="userDwell != null and userDwell !=''">
-                  user_dwell = #{userDwell},
-              </if>
-              <if test="userEmail != null and userEmail != ''">
-                  user_email = #{userEmail},
-              </if>
-              <if test="userSignature != null and userSignature !=''">
-                  user_signature = #{userSignature},
-              </if>
-              <if test="userCollect != null">
-                  user_collect = #{userCollect},
-              </if>
-              <if test="userPassword != null and userPassword != ''">
-                  user_password = #{userPassword},
-              </if>
-              <if test="comCreate != null">
-                  com_create = #{comCreate},
-              </if>
-              <if test="comUpdate != null">
-                  com_update = #{comUpdate},
-              </if>
-              <if test="comYn != null">
-                  com_yn = #{comYn},
-              </if>
-          </set>
-            where user_id = #{userId}
+          SET
+             com_yn = 1
+          where user_id = #{id}
     </update>
 
     <!--根据id 查询-->

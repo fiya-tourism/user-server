@@ -24,9 +24,9 @@ public interface UserService {
 
     /**
      *  逻辑删除 用户信息
-     * @param userVO
+     * @param
      */
-    void delete(UserVO userVO);
+    void delete(Integer id);
 
     /**
      *  根据id 回显用户信息

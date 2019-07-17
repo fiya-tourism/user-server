@@ -21,16 +21,13 @@ public class PageUtils {
 	private String sort;
 	/** 排序方式 */
 	private String order;
-	
+
 	// 条件
-	private Integer letId; //房源编号
-	private Integer stId; //员工编号
-	private String maxDate; //开始时间
-	private String minDate;  //结束时间
+	private Integer userId; //房源编号
+	private String userName;
 	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date endDate;  //结束时间
-	private String stName; // 员工姓名
+	private Date userBir;  //结束时间
 
 	public int getPage() {
 		return page;
@@ -72,51 +69,27 @@ public class PageUtils {
 		this.order = order;
 	}
 
-	public Integer getLetId() {
-		return letId;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setLetId(Integer letId) {
-		this.letId = letId;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	public Integer getStId() {
-		return stId;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setStId(Integer stId) {
-		this.stId = stId;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getMaxDate() {
-		return maxDate;
+	public Date getUserBir() {
+		return userBir;
 	}
 
-	public void setMaxDate(String maxDate) {
-		this.maxDate = maxDate;
-	}
-
-	public String getMinDate() {
-		return minDate;
-	}
-
-	public void setMinDate(String minDate) {
-		this.minDate = minDate;
-	}
-
-	public String getStName() {
-		return stName;
-	}
-
-	public void setStName(String stName) {
-		this.stName = stName;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setUserBir(Date userBir) {
+		this.userBir = userBir;
 	}
 }
