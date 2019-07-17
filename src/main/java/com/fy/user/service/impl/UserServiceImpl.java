@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public UserVO toUpdate(Integer userId) {
+    public UserVO toUpdate(@RequestParam("userId") Integer userId) {
 
         return userMapper.toUpdate(userId);
     }

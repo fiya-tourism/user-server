@@ -12,7 +12,7 @@
                 and user_id = #{userId}
             </if>
             <if test="userName != null and userName!=''">
-                and user_name like '%'#{userName}'%'
+                and user_name like concat('%',#{userName},'%')
             </if>
             <if test="userBir != null">
                 and user_bir = #{userBir}
@@ -26,7 +26,7 @@
 
     <!--添加用户信息-->
     <insert id="add" parameterType="com.fy.user.domain.UserVO">
-        INSERT INTO   fy_user(user_sex,user_name,user_age,user_photo,user_phone,user_identity,user_bir,user_dwell,user_email,user_signature,user_collect,user_password,com_create,com_update,com_yn) VALUES
+        INSERT INTO   fy_user(user_name,user_sex,user_age,user_photo,user_phone,user_identity,user_bir,user_dwell,user_email,user_signature,user_collect,user_password,com_create,com_update,com_yn) VALUES
         (#{userName},#{userSex},#{userAge},#{userPhoto},#{userPhone},#{userIdentity},#{userBir},#{userDwell},#{userEmail},#{userSignature},#{userCollect},#{userPassword},#{comCreate},#{comUpdate},#{comYn})
     </insert>
 
@@ -58,20 +58,20 @@
             <if test="userName != null and userName != ''">
                 user_name = #{userName},
             </if>
-            <if test="user_age != null">
+            <if test="userAge != null">
                 user_age = #{userAge},
             </if>
-            <if test="user_photo != null and user_photo !=''">
+            <if test="userPhoto != null and userPhoto !=''">
                 user_photo = #{userPhoto},
             </if>
-            <if test="user_phone != null and user_phone != ''">
+            <if test="userPhone != null and userPhone != ''">
                 user_phone = #{userPhone},
             </if>
             <if test="userIdentity != null and userIdentity != ''">
                 user_identity = #{userIdentity},
             </if>
             <if test="userBir != null">
-                user_dwell = #{userBir},
+                user_bir = #{userBir},
             </if>
             <if test="userDwell != null and userDwell !=''">
                 user_dwell = #{userDwell},

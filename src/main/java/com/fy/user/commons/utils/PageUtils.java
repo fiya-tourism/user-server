@@ -23,11 +23,11 @@ public class PageUtils {
 	private String order;
 
 	// 条件
-	private Integer userId; //房源编号
+	private Integer userId; //用户编号
 	private String userName;
 	@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date userBir;  //结束时间
+	private Date userBir;  //用户生日
 
 	public int getPage() {
 		return page;

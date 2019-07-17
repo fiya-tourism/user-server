@@ -1,5 +1,6 @@
 package com.fy.user.controller;
 
+import com.fy.user.commons.utils.CommonIOUtils;
 import com.fy.user.commons.utils.DataGridUtil;
 import com.fy.user.commons.utils.PageUtils;
 import com.fy.user.commons.utils.ResultVO;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author 武豫
@@ -37,7 +41,7 @@ public class UserController {
     @ApiOperation(value = "飞亚旅游-用户查询")
     @RequestMapping("queryUserList")
     @ResponseBody
-    public DataGridUtil<UserVO> queryUserList(PageUtils page){
+    public DataGridUtil<UserVO> queryUserList(@RequestBody PageUtils page){
         return userService.queryUserList(page);
     }
 
@@ -80,6 +84,7 @@ public class UserController {
      */
     @ApiOperation(value = "回显信息")
     @RequestMapping("toUpdate")
+    @ResponseBody
     public UserVO toUpdate(Integer userId){
         return userService.toUpdate(userId);
     }
@@ -91,7 +96,17 @@ public class UserController {
      */
     @ApiOperation(value = "修改用户信息")
     @RequestMapping("updateInfo")
-    public String updateInfo(UserVO userVO){
+    @ResponseBody
+    public String updateInfo(@RequestBody UserVO userVO){
         return userService.updateInfo(userVO);
     }
+
+    @ApiOperation(value ="上传头像")
+    @RequestMapping("uploadFileInfo")
+    @ResponseBody
+    public String uploadFileInfo(MultipartFile upfile, HttpServletRequest req){
+        String path = CommonIOUtils.uploadFile("D://1810img",req , upfile);
+        return path;
+    }
+
 }
