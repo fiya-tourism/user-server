@@ -1,11 +1,8 @@
 package com.fy.user.mapper;
 
-import com.fy.user.commons.utils.PageUtils;
+import com.fy.commons.utils.PageUtils;
 import com.fy.user.domain.UserVO;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

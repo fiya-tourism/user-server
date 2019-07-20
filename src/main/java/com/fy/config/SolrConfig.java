@@ -1,4 +1,4 @@
-package com.fy.user.config;
+package com.fy.config;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

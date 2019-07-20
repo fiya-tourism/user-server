@@ -1,8 +1,8 @@
 package com.fy.user.service.impl;
 
-import com.fy.user.commons.utils.DataGridUtil;
-import com.fy.user.commons.utils.PageUtils;
-import com.fy.user.commons.utils.StrTool;
+import com.fy.commons.utils.DataGridUtil;
+import com.fy.commons.utils.PageUtils;
+import com.fy.commons.utils.StrTool;
 import com.fy.user.domain.UserVO;
 import com.fy.user.mapper.UserMapper;
 import com.fy.user.service.UserService;

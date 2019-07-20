@@ -1,9 +1,9 @@
 package com.fy.user.controller;
 
-import com.fy.user.commons.utils.CommonIOUtils;
-import com.fy.user.commons.utils.DataGridUtil;
-import com.fy.user.commons.utils.PageUtils;
-import com.fy.user.commons.utils.ResultVO;
+import com.fy.commons.utils.CommonIOUtils;
+import com.fy.commons.utils.DataGridUtil;
+import com.fy.commons.utils.PageUtils;
+import com.fy.commons.utils.ResultVO;
 import com.fy.user.domain.UserVO;
 import com.fy.user.service.UserService;
 import io.swagger.annotations.Api;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 

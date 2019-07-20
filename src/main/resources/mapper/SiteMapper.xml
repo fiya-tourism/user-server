@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 定义如何找到这个mapper -->
+<mapper namespace="com.fy.site.mapper.SiteMapper">
+
+    <!-- 根据用户id查询地址-->
+    <select id="querySiteList" resultType="com.fy.site.domain.SiteVO" parameterType="Integer">
+           SELECT
+                s.*
+            FROM
+                fy_site s
+            LEFT JOIN
+                fy_user u
+            ON
+	          u.user_id = s.user_id
+	        where s.com_yn=0
+    </select>
+
+    <!--新增地址-->
+    <insert id="add" parameterType="com.fy.site.domain.SiteVO" >
+          INSERT INTO fy_site (user_id,site_name,site_province,site_city,site_county,site_particular,site_phone,site_postalcode,site_default,com_create,com_update,com_yn) VALUES
+            (#{userId},#{siteName},#{siteProvince},#{siteCity},#{siteCounty},#{siteParticular},#{sitePhone},#{sitePostalcode},#{siteDefault},#{comCreate},#{comUpdate},#{comYn})
+    </insert>
+
+    <!--逻辑删除 改变状态 0 = 展示 1 = 不展示-->
+    <update id="delete" parameterType="com.fy.site.domain.SiteVO">
+           UPDATE fy_site
+          SET
+             com_yn = 1
+          where site_id = #{siteId}
+    </update>
+
+    <!--根据id查询地址信息-->
+    <select id="toUpdate" parameterType="com.fy.site.domain.SiteVO" resultType="com.fy.site.domain.SiteVO">
+        SELECT * FROM fy_site
+        WHERE
+          site_id = #{siteId}
+    </select>
+
+    <!--修改地址信息-->
+    <update id="updataInfo" parameterType="com.fy.site.domain.SiteVO">
+        UPDATE fy_site
+          <set>
+              <if test="siteName !=null and siteName!=''" >
+                  site_name = #{siteName},
+              </if>
+              <if test="siteProvince !=null and siteProvince !=''" >
+                  site_province = #{siteProvince},
+              </if>
+              <if test="siteCity !=null and siteCity !=''" >
+                  site_city = #{siteCity},
+              </if>
+              <if test="siteCounty !=null and siteCounty!=''" >
+                  site_county = #{siteCounty},
+              </if>
+              <if test="siteParticular !=null and siteParticular!=''" >
+                  site_particular = #{siteParticular},
+              </if>
+              <if test="sitePhone !=null and sitePhone !=''" >
+                  site_phone = #{sitePhone},
+              </if>
+              <if test="sitePostalcode !=null" >
+                  site_postalcode = #{sitePostalcode},
+              </if>
+              <if test="siteDefault !=null" >
+                  site_default = #{siteDefault},
+              </if>
+              <if test="comCreate !=null" >
+                  com_create = #{comCreate},
+              </if>
+              <if test="comUpdate !=null" >
+                  com_update = #{comUpdate},
+              </if>
+              <if test="comYn !=null" >
+                  com_yn = #{comYn},
+              </if>
+          </set>
+            WHERE
+                site_id = #{siteId}
+    </update>
+
+
+</mapper>

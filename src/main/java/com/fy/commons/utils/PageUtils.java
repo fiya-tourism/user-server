@@ -1,4 +1,4 @@
-package com.fy.user.commons.utils;
+package com.fy.commons.utils;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;

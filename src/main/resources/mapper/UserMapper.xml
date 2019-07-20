@@ -4,7 +4,7 @@
 <mapper namespace="com.fy.user.mapper.UserMapper">
 
     <!--查询用户信息-->
-    <select id="queryUserList" resultType="com.fy.user.domain.UserVO" parameterType="com.fy.user.commons.utils.PageUtils">
+    <select id="queryUserList" resultType="com.fy.user.domain.UserVO" parameterType="com.fy.commons.utils.PageUtils">
         select * from fy_user
         <where>
             com_yn=0
