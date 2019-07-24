@@ -51,7 +51,7 @@ public class SiteController {
     @ApiOperation(value = "新增地址接口")
     @RequestMapping("add")
     @ResponseBody
-    public String add(@RequestBody SiteVO siteVO){
+    public ResultVO add(@RequestBody SiteVO siteVO){
         return siteService.add(siteVO);
     }
 

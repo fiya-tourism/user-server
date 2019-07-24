@@ -1,5 +1,6 @@
 package com.fy.site.service.impl;
 
+import com.fy.commons.utils.ResultVO;
 import com.fy.site.domain.SiteVO;
 import com.fy.site.mapper.SiteMapper;
 import com.fy.site.service.SiteService;
@@ -40,13 +41,21 @@ public class SiteServiceImpl implements SiteService{
      * @return
      */
     @Override
-    public String add(SiteVO siteVO) {
-        //添加逻辑状态  0=展示 1=不展示
-        siteVO.setComYn(0);
-        //发布时间
+    public ResultVO add(SiteVO siteVO) {
+        ResultVO rs = new ResultVO();
         siteVO.setComCreate(new Date());
-        siteMapper.add(siteVO);
-        return "添加成功";
+        siteVO.setComYn(0);
+        try{
+            siteMapper.add(siteVO);
+            rs.setMsg("新增成功");
+            rs.setCode(200);
+        }catch (Exception e){
+            System.out.println(e);
+            rs.setCode(500);
+            rs.setMsg("新增失败");
+            rs.setSuccessFalse();
+        }
+        return rs;
     }
 
     @Override

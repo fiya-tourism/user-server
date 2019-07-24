@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace 定义如何找到这个mapper -->
+<mapper namespace="com.fy.login.mapper.LoginMapper">
+
+    <!--用户名密码判断-->
+    <select id="toLogin" parameterType="com.fy.user.domain.UserVO" resultType="com.fy.user.domain.UserVO">
+        select *
+        from fy_user
+        where user_phone = #{userPhone} and user_password=#{userPassword}
+    </select>
+
+    <!--手机号唯一性校验-->
+    <select id="checkPhone" parameterType="com.fy.user.domain.UserVO" resultType="com.fy.user.domain.UserVO">
+        select
+          *
+        from fy_user
+        where user_phone = #{userPhone}
+    </select>
+
+    <!--添加用户信息-->
+    <insert id="register" parameterType="com.fy.user.domain.UserVO">
+        INSERT INTO   fy_user(user_name,user_sex,user_age,user_photo,user_phone,user_identity,user_bir,user_dwell,user_email,user_signature,user_collect,user_password,com_create,com_update,com_yn) VALUES
+        (#{userName},#{userSex},#{userAge},#{userPhoto},#{userPhone},#{userIdentity},#{userBir},#{userDwell},#{userEmail},#{userSignature},#{userCollect},#{userPassword},#{comCreate},#{comUpdate},#{comYn})
+    </insert>
+
+</mapper>

@@ -1,5 +1,6 @@
 package com.fy.site.service;
 
+import com.fy.commons.utils.ResultVO;
 import com.fy.site.domain.SiteVO;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface SiteService {
      * @param siteVO
      * @return
      */
-    String add(SiteVO siteVO);
+    ResultVO add(SiteVO siteVO);
 
     /**
      * 根据id删除地址信息
